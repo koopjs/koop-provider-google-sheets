@@ -1,0 +1,34 @@
+{
+  "name": "googlesheets-provider",
+  "version": "2.1.0",
+  "description": "A Google Sheets provider",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "koop": "^3.5.1",
+    "googleapis": "18.0.0",
+    "google-auth-library": "0.10.0"
+
+  },
+  "author": "Doug Carroll",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koopjs/googlesheets-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koopjs/googlesheets-provider/issues"
+  },
+  "homepage": "https://github.com/koopjs/googlesheets-provider",
+  "keywords": [
+    "koop",
+    "google",
+    "docs",
+    "sheets"
+  ]
+}
