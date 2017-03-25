@@ -57,6 +57,7 @@ Once the Google Sheets provider is running, read below on how to bring this cont
 * Log into portal as a publisher or admin
 * Click ``` My Content -> Add Item -> From the web ```
 * Complete the form as follows:
+
 Type: ``` ArcGIS Server Web Service ```
 
 Url: ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0 ```
