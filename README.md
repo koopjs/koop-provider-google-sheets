@@ -58,13 +58,13 @@ Once the Google Sheets provider is running, read below on how to bring this cont
 * Click ``` My Content -> Add Item -> From the web ```
 * Complete the form as follows:
 
-Type: ``` ArcGIS Server Web Service ```
+**Type:** ``` ArcGIS Server Web Service ```
 
-Url: ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0 ```
+**Url:** ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0 ```
 
-Title: ``` Google Sheets ```
+**Title:** ``` Google Sheets ```
 
-Tags: ``` Park Cleanup, Insights, Provider ```
+**Tags:** ``` Park Cleanup, Insights, Provider ```
 
 ## Add Provider to Insights
 
@@ -75,7 +75,6 @@ Tags: ``` Park Cleanup, Insights, Provider ```
 
 # Other Useful Information
 
-If you do not have the flexibility to deploy the project to a development environment, feel free
-to give the sample Google Sheets provider I created here.
+If you do not have the flexibility to deploy the project to a development environment, feel free to try out the sample below.
 
 [https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0](https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0) 
