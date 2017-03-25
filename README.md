@@ -5,7 +5,6 @@ Create a provider to consume data from Google Sheets inside Insights for ArcGIS
 
 Insights for ArcGIS can connect to any data source using the provider patter.  This project includes an example Koop provider compatiable with Insights for ArcGIS. 
 Javascript is used to create an express web server, which includes web service that knows how to communicate with Google Sheets.  
-While under review, the web service will be compatiable with Insights for ArcGIS.
 
 ## Dependencies
 
