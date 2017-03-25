@@ -21,7 +21,7 @@ Javascript is used to create an express web server, which includes web service t
 ``` npm start ```
 
 
-e.g. Once you've run ``` npm start ``` you should see something like this:
+After ``` npm start ``` you should see something like this:
 [https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0](https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0) 
 
 
@@ -50,7 +50,7 @@ You have 3 deployment options.
 
 # Getting Started
 
-After your Google Sheets provider web service is running, read below on how to bring this content into portal. 
+Once the Google Sheets provider is running, read below on how to bring this content into portal. 
 
 ## Add Provider to Portal for ArcGIS
 
@@ -64,7 +64,6 @@ Url: ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureSer
 Title: ``` Google Sheets ```
 
 Tags: ``` Park Cleanup, Insights, Provider ```
-
 
 ## Add Provider to Insights
 
