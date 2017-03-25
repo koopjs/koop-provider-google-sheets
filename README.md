@@ -1,19 +1,19 @@
-# google-sheets-provider
+# Google Sheets Provider
 Create a provider to consume data from Google Sheets inside Insights for ArcGIS
 
-# Overview
+## Overview
 
-This is a Koop provider that uses Javascript to create a web server and web service using express.  
+This project is a Koop provider. It uses Javascript to create an express web server with web service that knows how to communicate with Google Sheets.  
 While under review, the web service is compatiable with Insights for ArcGIS and other ArcGIS products. 
 
 
-# Dependencies
+## Dependencies
 
-* NodeJS must be installed
+* NodeJS
 
-# Instructions
+## Instructions
 
-``` git clone https://github.com/ArcGIS/google-sheets-provider.git '''
+``` git clone https://github.com/ArcGIS/google-sheets-provider.git ```
 ``` cd google-sheets-provider ```
 ``` npm install ```
 ``` npm start ```
@@ -23,7 +23,7 @@ e.g. Once you've run ``` npm start ``` you should see something like this:
 [https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0](https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0) 
 
 
-# Deployment 
+## Deployment 
 
 You have 3 deployment options.  
 
