@@ -3,9 +3,9 @@ Create a provider to consume data from Google Sheets inside Insights for ArcGIS
 
 ## Overview
 
-This project is a Koop provider. It uses Javascript to create an express web server with web service that knows how to communicate with Google Sheets.  
-While under review, the web service is compatiable with Insights for ArcGIS and other ArcGIS products. 
-
+Insights for ArcGIS can connect to any data source using the provider patter.  This project includes an example Koop provider compatiable with Insights for ArcGIS. 
+Javascript is used to create an express web server, which includes web service that knows how to communicate with Google Sheets.  
+While under review, the web service will be compatiable with Insights for ArcGIS.
 
 ## Dependencies
 
@@ -14,8 +14,11 @@ While under review, the web service is compatiable with Insights for ArcGIS and 
 ## Instructions
 
 ``` git clone https://github.com/ArcGIS/google-sheets-provider.git ```
+
 ``` cd google-sheets-provider ```
+
 ``` npm install ```
+
 ``` npm start ```
 
 
@@ -56,9 +59,13 @@ After your Google Sheets provider web service is running, read below on how to b
 * Click ``` My Content -> Add Item -> From the web ```
 * Complete the form as follows:
 Type: ``` ArcGIS Server Web Service ```
+
 Url: ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0 ```
+
 Title: ``` Google Sheets ```
+
 Tags: ``` Park Cleanup, Insights, Provider ```
+
 
 ## Add Provider to Insights
 
