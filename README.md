@@ -22,8 +22,7 @@ Javascript is used to create an express web server, which includes web service t
 
 
 After ``` npm start ``` you should see something like this:
-[https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0](https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0) 
-
+https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0)
 
 ## Deployment 
 
@@ -60,7 +59,7 @@ Once the Google Sheets provider is running, read below on how to bring this cont
 
 **Type:** ``` ArcGIS Server Web Service ```
 
-**Url:** ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0 ```
+**Url:** ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0 ```
 
 **Title:** ``` Google Sheets ```
 
@@ -77,4 +76,4 @@ Once the Google Sheets provider is running, read below on how to bring this cont
 
 If you do not have the flexibility to deploy the project to a development environment, feel free to try out the sample below.
 
-[https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0](https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/FeatureServer/0) 
+https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0
