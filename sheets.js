@@ -1,101 +1,63 @@
-var google = require('googleapis')
+const google = require('googleapis')
+const config = require('config')
+const sheets = google.sheets('v4')
+const XVARS = ['x', 'longitude', 'lon', 'longitud']
+const YVARS = ['y', 'latitude', 'lat', 'latitud']
 // var googleAuth = require('google-auth-library')
 
-function Sheets () {}
+function GoogleSheets () {}
 
-Sheets.prototype.getData = function getData (req, callback) {
-  console.log(req.params)
-  var sheetId = req.params.host  // 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
-  var sheetRange = req.params.id // Park Cleanup!A1:H  OR World Cities!A1:I
-  var geojson = {
-    type: 'FeatureCollection',
-    features: [],
-    ttl: 1200, // 20 minutes
-    metadata: {
-      name: sheetRange.split('!')[0], // Get the workbook name before ! symbol and set as layer name
-      description: 'Collaborate in google docs, analyse in ArcGIS'
-    }
+GoogleSheets.prototype.getData = function getData (req, callback) {
+  const spreadsheetId = req.params.host  // e.g. 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
+  const range = req.params.id // e.g. Park Cleanup!A1:H  OR World Cities!A1:I
+  const gsOpts = {
+    auth: config.googlesheets.auth,
+    spreadsheetId, // e.g. https://docs.google.com/spreadsheets/d/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/edit?usp=sharing
+    range
   }
-  var sheets = google.sheets('v4')
-  sheets.spreadsheets.values.get({
-//    auth: "AIzaSyAVwDBIic7kq3DYrN4cYQxaq2kHmYirWOM",
-    spreadsheetId: sheetId, // https://docs.google.com/spreadsheets/d/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/edit?usp=sharing
-    range: sheetRange
-  }, (err, response) => {
-    if (err) {
-      console.log('Google API returned an error: ' + err)
-      return
+  sheets.spreadsheets.values.get(gsOpts, (err, res) => {
+    if (err) return callback(err)
+    const geojson = translate(res)
+    geojson.ttl = config.googlesheets.ttl || 1200 // 20 minutes
+    geojson.metadata = {
+      name: range.split('!')[0], // Get the workbook name before ! symbol and set as layer name
+      description: 'Collaborate in Google docs, analyse in ArcGIS'
     }
-    var rows = response.values
-    if (rows.length > 0) {
-      for (var i = 0; i < rows.length; i++) {
-        var row = rows[i]
-        if (i === 0) {
-          var propertyNames = this.createPropertyNames(row)
-          continue
-        }
-        row.OBJECTID = i // Need to add a unique numeric objectid field
-        var feature = this.translate(row, propertyNames)
-        geojson.features.push(feature)
-      }
-      callback(null, geojson)
-    }
+    callback(null, geojson)
   })
 }
 
-Sheets.prototype.translate = function translate (row, propertyNames) {
-  var props = {}
-  props.OBJECTID = row.OBJECTID
-  var x = propertyNames.indexOf('x')
-  var y = propertyNames.indexOf('y')
-  for (let i = 0; i < propertyNames.length; i++) {
-    if (i === y || i === x) {
-      continue
-    }
-    props[propertyNames[i]] = row[i]
+function translate (response) {
+  const propertyNames = createPropertyNames(response.values[0])
+  return {
+    type: 'FeatureCollection',
+    features: response.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
   }
+}
+
+function formatFeature (row, propertyNames) {
+  const x = propertyNames.indexOf('x')
+  const y = propertyNames.indexOf('y')
   return {
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [parseInt(row[x]), parseInt(row[y])] // Make sure coordinates are numbers not strings
+      coordinates: [parseFloat(row[x]), parseFloat(row[y])] // Make sure coordinates are numbers not strings
     },
-    properties: props
+    properties: row.reduce((props, prop, i) => {
+      if (i !== x && i !== y) props[propertyNames[i]] = prop
+      return props
+    }, {})
   }
 }
 
-Sheets.prototype.createPropertyNames = function createPropertyNames (row) {
-  var propertyNames = []
-  for (let i = 0; i < row.length; i++) { // Look for columns names commonly reserved for storing geospatial data and transform them to x and y
-    var name = row[i].toLowerCase()
-    switch (name) {
-      case 'latitude':
-        name = 'y'
-        break
-      case 'latitud':
-        name = 'y'
-        break
-      case 'lat':
-        name = 'y'
-        break
-      case 'y':
-        name = 'y'
-        break
-      case 'longitude':
-        name = 'x'
-        break
-      case 'longitud':
-        name = 'x'
-        break
-      case 'long':
-        name = 'x'
-        break
-      case 'lng':
-        name = 'x'
-        break
-    }
-    propertyNames.push(name)
-  }
-  return propertyNames
+function createPropertyNames (header) {
+  return header.map(head => {
+    const candidate = head.toLowerCase()
+    if (YVARS.indexOf(candidate) > -1) return 'y'
+    else if (XVARS.indexOf(candidate) > -1) return 'x'
+    else return head
+  })
 }
-module.exports = Sheets
+
+module.exports = GoogleSheets
