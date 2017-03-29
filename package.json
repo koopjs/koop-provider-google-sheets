@@ -1,6 +1,6 @@
 {
-  "name": "googlesheets-provider",
-  "version": "2.1.0",
+  "name": "koop-provider-google-sheets",
+  "version": "1.0.0",
   "description": "A Google Sheets provider",
   "main": "index.js",
   "directories": {
@@ -19,12 +19,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/koopjs/googlesheets-provider.git"
+    "url": "git+https://github.com/koopjs/koop-provider-google-sheets.git"
   },
   "bugs": {
-    "url": "https://github.com/koopjs/googlesheets-provider/issues"
+    "url": "https://github.com/koopjs/koop-provider-google-sheets/issues"
   },
-  "homepage": "https://github.com/koopjs/googlesheets-provider",
+  "homepage": "https://github.com/koopjs/koop-provider-google-sheets",
   "keywords": [
     "koop",
     "google",
