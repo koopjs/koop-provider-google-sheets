@@ -13,7 +13,7 @@ Sheets.prototype.getData = function getData(req, callback) {
     features: [],
     ttl: 1200, //20 minutes
     metadata:  {
-      name: "Students",
+      name: sheetRange.split("!")[0], //Get the workbook name before ! symbol and set as layer name
       description: "Collaborate in google docs, analyse in ArcGIS"
     }
   }
