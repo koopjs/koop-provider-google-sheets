@@ -22,7 +22,7 @@ Javascript is used to create an express web server, which includes web service t
 
 
 After ``` npm start ``` you should see something like this:
-https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0)
+https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0
 
 ## Deployment 
 

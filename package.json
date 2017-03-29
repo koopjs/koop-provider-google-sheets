@@ -13,7 +13,6 @@
     "koop": "^3.5.1",
     "googleapis": "18.0.0",
     "google-auth-library": "0.10.0"
-
   },
   "author": "Doug Carroll",
   "license": "Apache-2.0",
@@ -30,5 +29,8 @@
     "google",
     "docs",
     "sheets"
-  ]
+  ],
+  "devDependencies": {
+    "standard": "^9.0.2"
+  }
 }
