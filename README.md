@@ -12,17 +12,35 @@ Javascript is used to create an express web server, which includes web service t
 
 ## Instructions
 
-``` git clone https://github.com/ArcGIS/google-sheets-provider.git ```
+`git clone https://github.com/ArcGIS/google-sheets-provider.git`
 
-``` cd google-sheets-provider ```
+`cd google-sheets-provider `
 
-``` npm install ```
+`npm install`
 
-``` npm start ```
+`npm start`
 
 
-After ``` npm start ``` you should see something like this:
-https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0
+After `npm start` you should see something like this:
+
+```bash
+> node server.js
+
+info: registered output: Geoservices 1.1.1
+No root directory was specified, defaulting to:  /Users/foobar/koop/providers/google-sheets
+info: registered filesystem: localfs 1.1.1
+info: registered provider: googlesheets 1.0.0
+
+
+Koop Trimet Provider listening on 3000
+For more docs visit: https://koopjs.github.io/docs/specs/provider/
+To find providers visit: https://www.npmjs.com/search?q=koop+provider
+
+Try it out in your browswer: http://localhost:3000/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0/query
+Or on the command line: curl --silent http://localhost:3000/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0/query?returnCountOnly=true
+
+Press control + c to exit
+```
 
 ## Deployment 
 
@@ -32,7 +50,7 @@ You have 3 deployment options.
 
 * Create an [NOW](https://zeit.co/now) account, which enables free hosting of SSL NodeJS services
 * Download and install NOW
-* From inside the ``` google-sheets-provider ``` run ``` now ``` in your terminal
+* From inside the `google-sheets-provider` run `now` in your terminal
 * You will end up with this provider being hosted in NOWs free cloud
 
 **Option 2 -** Arrage to have NodeJS installed on your 10.5+ Portal for ArcGIS machine
@@ -54,22 +72,22 @@ Once the Google Sheets provider is running, read below on how to bring this cont
 ## Add Provider to Portal for ArcGIS
 
 * Log into portal as a publisher or admin
-* Click ``` My Content -> Add Item -> From the web ```
+* Click `My Content -> Add Item -> From the web`
 * Complete the form as follows:
 
-**Type:** ``` ArcGIS Server Web Service ```
+**Type:** `ArcGIS Server Web Service`
 
-**Url:** ``` https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0 ```
+**Url:** `https://googlesheets-provider-hkrquwqwvp.now.sh/googlesheets/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/Park%20Cleanup!A1:H/FeatureServer/0`
 
-**Title:** ``` Google Sheets ```
+**Title:** `Google Sheets`
 
-**Tags:** ``` Park Cleanup, Insights, Provider ```
+**Tags:** `Park Cleanup, Insights, Provider`
 
 ## Add Provider to Insights
 
 * Log into Insights for ArcGIS
-* Click ``` New Workbook ```
-* Browse for ``` Google Sheets ``` and select
+* Click `New Workbook`
+* Browse for `Google Sheets` and select
 * Click Add
 
 # Other Useful Information
