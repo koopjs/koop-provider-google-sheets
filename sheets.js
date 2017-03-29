@@ -1,13 +1,11 @@
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
 
-function Sheets() { 
-  this.propertyNames = [];
-}
+function Sheets() {}
 
 Sheets.prototype.getData = function getData(req, callback) {
-  var sheetId = req.params.host  // 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
-  var sheetRange = req.params.id // Park Cleanup!A1:H
+  var sheetId = req.params.host  // 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
+  var sheetRange = req.params.id // Park Cleanup!A1:H  OR World Cities!A1:I
   var geojson = {
     type: 'FeatureCollection',
     features: [],
@@ -32,11 +30,11 @@ Sheets.prototype.getData = function getData(req, callback) {
       for (var i = 0; i < rows.length; i++) {
         var row = rows[i];
         if(i===0){
-          this.createMeasureNames(row);
+          var propertyNames = this.createPropertyNames(row);
           continue;
         }
         row.OBJECTID = i; //Need to add a unique numeric objectid field
-        var feature = this.translate(row);
+        var feature = this.translate(row, propertyNames);
         geojson.features.push(feature);
       }
       callback(null, geojson)
@@ -44,15 +42,16 @@ Sheets.prototype.getData = function getData(req, callback) {
   }));
 }
 
-Sheets.prototype.translate = function translate(row) {
+Sheets.prototype.translate = function translate(row, propertyNames) {
   var props = {};
   props.OBJECTID = row.OBJECTID;
-  var x = this.propertyNames.indexOf('x')
-  var y = this.propertyNames.indexOf('y')
-  for(i=0; i<this.propertyNames.length; i++){
-    if(i === y || i === x)
+  var x = propertyNames.indexOf('x')
+  var y = propertyNames.indexOf('y')
+  for(i=0; i<propertyNames.length; i++){
+    if(i === y || i === x){
       continue;
-    props[this.propertyNames[i]] = row[i];
+    }
+    props[propertyNames[i]] = row[i];
   }
   return {
     type: 'Feature',
@@ -64,8 +63,8 @@ Sheets.prototype.translate = function translate(row) {
   }
 }
 
-Sheets.prototype.createMeasureNames = function createMeasureNames(row) {
-  var props = [];
+Sheets.prototype.createPropertyNames = function createPropertyNames(row) {
+  var propertyNames = [];
   for(i=0; i<row.length; i++){ //Look for columns names commonly reserved for storing geospatial data and transform them to x and y
     var name = row[i].toLowerCase()
     switch (name) {
@@ -94,7 +93,8 @@ Sheets.prototype.createMeasureNames = function createMeasureNames(row) {
             name = "x";
             break;
     }
-    this.propertyNames.push(name);
+    propertyNames.push(name);
   }
+  return propertyNames;
 }
 module.exports = Sheets
