@@ -12,6 +12,13 @@ Javascript is used to create an express web server, which includes web service t
 
 ## Instructions
 
+### Configuration
+
+1. Obtain an API Key for Google Sheets - [instructions](https://developers.google.com/sheets/api/guides/authorizing#APIKey)
+2. Add the api key to you configuration
+ - option 1: edit config/production.json and replace the value under googlesheets.auth with your api key
+ - option 2: before running your server add your auth to your environment e.g. `export GOOGLESHEETS_AUTH=YOUR_KEY 
+
 `git clone https://github.com/ArcGIS/google-sheets-provider.git`
 
 `cd google-sheets-provider `
