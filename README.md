@@ -1,4 +1,6 @@
 # Google Sheets Provider
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/koopjs/koop-provider-google-sheets.svg)](https://greenkeeper.io/)
 Create a provider to consume data from Google Sheets inside Insights for ArcGIS
 
 ## Overview
