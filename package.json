@@ -13,7 +13,7 @@
   "dependencies": {
     "config": "^1.25.1",
     "google-auth-library": "0.10.0",
-    "googleapis": "18.0.0",
+    "googleapis": "20.1.0",
     "koop": "^3.5.1"
   },
   "author": "Doug Carroll",
@@ -33,6 +33,6 @@
     "sheets"
   ],
   "devDependencies": {
-    "standard": "^9.0.2"
+    "standard": "^10.0.3"
   }
 }
