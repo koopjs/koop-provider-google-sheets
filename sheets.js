@@ -15,7 +15,7 @@ GoogleSheets.prototype.getData = function getData (req, callback) {
     spreadsheetId, // e.g. https://docs.google.com/spreadsheets/d/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/edit?usp=sharing
     range
   }
-  sheets.spreadsheets.values.get(gsOpts, (err, res) => {
+  sheets.spreadsheets.values.get(gsOpts, {valueRenderOption: 'ValueRenderOption.UNFORMATTED_VALUE'}, (err, res) => {
     if (err) return callback(err)
     const geojson = translate(res)
     geojson.ttl = config.googlesheets.ttl || 1200 // 20 minutes
@@ -45,7 +45,9 @@ function formatFeature (row, propertyNames) {
       coordinates: [parseFloat(row[x]), parseFloat(row[y])] // Make sure coordinates are numbers not strings
     },
     properties: row.reduce((props, prop, i) => {
-      if (i !== x && i !== y) props[propertyNames[i]] = prop
+      if (i === x || i === y) return props
+      if (/^[0-9.]+$/.test(prop)) prop = parseFloat(prop)
+      props[propertyNames[i]] = prop
       return props
     }, {})
   }
