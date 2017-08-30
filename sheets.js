@@ -59,14 +59,12 @@ function createPropertyNames (header) {
   return header.map(head => {
     const candidate = head.toLowerCase()
     if (YVARS.indexOf(candidate) > -1 && !yFound) {
-        yFound = true
-        return 'y'
-    }
-    else if (XVARS.indexOf(candidate) > -1 && !xFound) {
+      yFound = true
+      return 'y'
+    } else if (XVARS.indexOf(candidate) > -1 && !xFound) {
       xFound = true
       return 'x'
-    }
-    else return head
+    } else return head
   })
 }
 
