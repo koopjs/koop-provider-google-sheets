@@ -54,11 +54,17 @@ function formatFeature (row, propertyNames) {
 }
 
 function createPropertyNames (header) {
+  let xFound = false
+  let yFound = false
   return header.map(head => {
     const candidate = head.toLowerCase()
-    if (YVARS.indexOf(candidate) > -1) return 'y'
-    else if (XVARS.indexOf(candidate) > -1) return 'x'
-    else return head
+    if (YVARS.indexOf(candidate) > -1 && !yFound) {
+      yFound = true
+      return 'y'
+    } else if (XVARS.indexOf(candidate) > -1 && !xFound) {
+      xFound = true
+      return 'x'
+    } else return head
   })
 }
 
