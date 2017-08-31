@@ -1,7 +1,7 @@
 const google = require('googleapis')
 const config = require('config')
 const sheets = google.sheets('v4')
-const XVARS = ['x', 'longitude', 'lon', 'longitud', 'longitude coordinate']
+const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
 const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
 // var googleAuth = require('google-auth-library')
 
