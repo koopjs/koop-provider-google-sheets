@@ -39,7 +39,6 @@ function formatFeature (row, propertyNames) {
   const x = propertyNames.indexOf('x')
   const y = propertyNames.indexOf('y')
   return {
-    type: 'Feature',
     geometry: {
       type: 'Point',
       coordinates: [parseFloat(row[x]), parseFloat(row[y])] // Make sure coordinates are numbers not strings
