@@ -47,7 +47,7 @@ function formatFeature (row, propertyNames) {
     properties: row.reduce((props, prop, i) => {
       if (i === x || i === y) return props
       if (/^[0-9.,]+$/.test(prop)) prop = parseFloat(prop.replace(/,/, ''))
-      props[propertyNames[i].replace(' ','_')] = prop
+      props[propertyNames[i].replace(' ', '_')] = prop
       return props
     }, {})
   }
