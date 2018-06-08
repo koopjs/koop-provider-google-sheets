@@ -1,5 +1,5 @@
 const {google} = require('googleapis')
-const config = require('config')
+const config = require('./config/production.json')
 const sheets = google.sheets('v4')
 const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
 const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
@@ -8,7 +8,7 @@ const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
 function GoogleSheets () {}
 
 GoogleSheets.prototype.getData = function getData (req, callback) {
-  const spreadsheetId = req.params.host  // e.g. 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
+  const spreadsheetId = req.params.host // e.g. 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
   const range = req.params.id // e.g. Park Cleanup!A1:H  OR World Cities!A1:I
   const gsOpts = {
     auth: config.googlesheets.auth,
@@ -31,7 +31,7 @@ function translate (response) {
   const propertyNames = createPropertyNames(response.data.values[0])
   return {
     type: 'FeatureCollection',
-    features: response..data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
+    features: response.data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
   }
 }
 
