@@ -1,4 +1,4 @@
-const google = require('googleapis')
+const {google} = require('googleapis')
 const config = require('config')
 const sheets = google.sheets('v4')
 const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
@@ -28,10 +28,10 @@ GoogleSheets.prototype.getData = function getData (req, callback) {
 }
 
 function translate (response) {
-  const propertyNames = createPropertyNames(response.values[0])
+  const propertyNames = createPropertyNames(response.data.values[0])
   return {
     type: 'FeatureCollection',
-    features: response.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
+    features: response..data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
   }
 }
 
