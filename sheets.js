@@ -31,7 +31,7 @@ function translate (response) {
   const propertyNames = createPropertyNames(response.data.values[0])
   return {
     type: 'FeatureCollection',
-    features: response..data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
+    features: response.data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
   }
 }
 
