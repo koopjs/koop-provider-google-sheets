@@ -1,10 +1,10 @@
-const {google} = require('googleapis')
-const config = require('./config/production.json')
+const { google } = require('googleapis')
+const config = require('config')
 const sheets = google.sheets('v4')
 const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
 const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
 // var googleAuth = require('google-auth-library')
-
+console.log(config)
 function GoogleSheets () {}
 
 GoogleSheets.prototype.getData = function getData (req, callback) {
@@ -15,7 +15,7 @@ GoogleSheets.prototype.getData = function getData (req, callback) {
     spreadsheetId, // e.g. https://docs.google.com/spreadsheets/d/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/edit?usp=sharing
     range
   }
-  sheets.spreadsheets.values.get(gsOpts, {valueRenderOption: 'ValueRenderOption.UNFORMATTED_VALUE'}, (err, res) => {
+  sheets.spreadsheets.values.get(gsOpts, { valueRenderOption: 'ValueRenderOption.UNFORMATTED_VALUE' }, (err, res) => {
     if (err) return callback(err)
     const geojson = translate(res)
     geojson.ttl = config.googlesheets.ttl || 1200 // 20 minutes
