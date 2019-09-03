@@ -1,0 +1,86 @@
+{  
+  "type":"FeatureCollection",
+  "features":[  
+     {  
+        "type":"Feature",
+        "geometry":{  
+           "type":"Point",
+           "coordinates":[  
+              -101.8898,
+              35.4817
+           ]
+        },
+        "properties":{  
+           "REPORTDATE":"4/22/17",
+           "ACRES":1546,
+           "FIRENAME":"Kritser East",
+           "INCIDENTID":"2017-TXTXS-001022",
+           "PERCENTCON":100,
+           "CONTAINDAT":"4/22/17",
+           "DISCOVERDT":"4/19/17"
+        }
+     },
+     {  
+        "type":"Feature",
+        "geometry":{  
+           "type":"Point",
+           "coordinates":[  
+              -82.0586,
+              29.9247
+           ]
+        },
+        "properties":{  
+           "REPORTDATE":"5/19/17",
+           "ACRES":304,
+           "FIRENAME":"Dupont",
+           "INCIDENTID":"2017-FLFLS-060640",
+           "PERCENTCON":100,
+           "CONTAINDAT":"4/22/17",
+           "DISCOVERDT":"5/7/17"
+        }
+     },
+     {  
+        "type":"Feature",
+        "geometry":{  
+           "type":"Point",
+           "coordinates":[  
+              -80.4172,
+              25.7661
+           ]
+        },
+        "properties":{  
+           "REPORTDATE":"4/26/17",
+           "ACRES":1065,
+           "FIRENAME":"Trail Fire",
+           "INCIDENTID":"2017-FLFLS-180096",
+           "PERCENTCON":100,
+           "CONTAINDAT":"4/22/17",
+           "DISCOVERDT":"3/5/17"
+        }
+     },
+     {  
+        "type":"Feature",
+        "geometry":{  
+           "type":"Point",
+           "coordinates":[  
+              -83.3192,
+              35.7683
+           ]
+        },
+        "properties":{  
+           "REPORTDATE":"5/5/2017 6",
+           "ACRES":140,
+           "FIRENAME":"Branam Hollow Road",
+           "INCIDENTID":"2017-TNTNS-100005",
+           "PERCENTCON":100,
+           "CONTAINDAT":"4/22/17",
+           "DISCOVERDT":"5/4/17"
+        }
+     }
+  ],
+  "ttl":1200,
+  "metadata":{  
+     "name":"fires",
+     "description":"Collaborate in Google docs, analyse in ArcGIS"
+  }
+}
