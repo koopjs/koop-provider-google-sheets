@@ -2,7 +2,7 @@ const test = require('tape')
 const proxyquire = require('proxyquire')
 const resFixture = require('./fixtures/response.json')
 const geojsonFixture = require('./fixtures/geojson.json')
-const modulePath = '../model'
+const modulePath = '../sheets'
 
 const Model = proxyquire(modulePath, {
   'googleapis': {

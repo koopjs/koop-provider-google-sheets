@@ -2,7 +2,7 @@ const pkg = require('./package.json')
 const provider = {
   name: 'googlesheets',
   hosts: true,
-  Model: require('./model'),
+  Model: require('./sheets'),
   version: pkg.version,
   type: 'provider'
 }
