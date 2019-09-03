@@ -1,21 +1,20 @@
-const google = require('googleapis')
+const { google } = require('googleapis')
 const config = require('config')
 const sheets = google.sheets('v4')
 const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
 const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
 // var googleAuth = require('google-auth-library')
-
 function GoogleSheets () {}
 
 GoogleSheets.prototype.getData = function getData (req, callback) {
-  const spreadsheetId = req.params.host  // e.g. 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
+  const spreadsheetId = req.params.host // e.g. 1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI OR 1dK_touGylnTtJBzve2HEwfev_f6JxCpRMb2NZ-LMI1g  ::Providers have built-in support for capturing request params, aka. googlesheets/:host/:id/FeatureServer/0
   const range = req.params.id // e.g. Park Cleanup!A1:H  OR World Cities!A1:I
   const gsOpts = {
     auth: config.googlesheets.auth,
     spreadsheetId, // e.g. https://docs.google.com/spreadsheets/d/1JlPaiuIHXmkfpLBaQdoRixPSasjX5NlDte70pyFT9yI/edit?usp=sharing
     range
   }
-  sheets.spreadsheets.values.get(gsOpts, {valueRenderOption: 'ValueRenderOption.UNFORMATTED_VALUE'}, (err, res) => {
+  sheets.spreadsheets.values.get(gsOpts, { valueRenderOption: 'ValueRenderOption.UNFORMATTED_VALUE' }, (err, res) => {
     if (err) return callback(err)
     const geojson = translate(res)
     geojson.ttl = config.googlesheets.ttl || 1200 // 20 minutes
@@ -28,10 +27,10 @@ GoogleSheets.prototype.getData = function getData (req, callback) {
 }
 
 function translate (response) {
-  const propertyNames = createPropertyNames(response.values[0])
+  const propertyNames = createPropertyNames(response.data.values[0])
   return {
     type: 'FeatureCollection',
-    features: response.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
+    features: response.data.values.slice(1).map(row => { return formatFeature(row, propertyNames) })
   }
 }
 
