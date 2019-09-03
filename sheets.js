@@ -4,7 +4,6 @@ const sheets = google.sheets('v4')
 const XVARS = ['x', 'longitude', 'lon', 'long', 'longitud', 'longitude coordinate']
 const YVARS = ['y', 'latitude', 'lat', 'latitud', 'latitude coordinate']
 // var googleAuth = require('google-auth-library')
-console.log(config)
 function GoogleSheets () {}
 
 GoogleSheets.prototype.getData = function getData (req, callback) {
